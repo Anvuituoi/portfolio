@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lam Vu An | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1e3a8a', // Dark Blue
+                        secondary: '#3b82f6', // Bright Blue
+                        accent: '#f59e0b', // Amber
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .timeline-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 20px;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+        @media (min-width: 768px) {
+            .timeline-line::before {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        /* Chat Widget Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        .typing-dot {
+            animation: typing 1.4s infinite ease-in-out both;
+        }
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes typing {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="#" class="text-xl font-bold text-primary tracking-tight">Vu An Lam.</a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 text-sm font-medium">
+                    <a href="#about" class="hover:text-secondary transition-colors">About</a>
+                    <a href="#experience" class="hover:text-secondary transition-colors">Experience</a>
+                    <a href="#projects" class="hover:text-secondary transition-colors">Projects</a>
+                    <a href="#press" class="hover:text-secondary transition-colors">Press</a>
+                    <a href="#awards" class="hover:text-secondary transition-colors">Awards</a>
+                    <a href="#contact" class="px-4 py-2 bg-primary text-white rounded-full hover:bg-blue-800 transition shadow-md">Contact</a>
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-slate-600 hover:text-primary focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+            <div class="px-4 pt-2 pb-4 space-y-1">
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">About</a>
+                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Experience</a>
+                <a href="#projects" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Projects</a>
+                <a href="#press" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Press</a>
+                <a href="#awards" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-primary hover:bg-slate-50">Awards</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-primary font-semibold">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="about" class="pt-32 pb-20 px-4">
+        <div class="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-12">
+            <div class="flex-1 space-y-6 text-center md:text-left">
+                <div class="inline-block px-3 py-1 rounded-full bg-blue-100 text-primary text-sm font-semibold mb-2">
+                    Digital Humanities & Economics & Aviation
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 leading-tight">
+                    Hello, I'm <span class="text-primary">Vu An Lam</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto md:mx-0" id="hero-bio">
+                    A Fulbright University Vietnam graduate specializing in Vietnam Studies and Economics. Passionate about leveraging technology for social impact, digital humanities, and aviation.
+                </p>
+
+                <!-- Gemini Feature 1: AI Summary -->
+                <div class="flex flex-col md:flex-row justify-center md:justify-start gap-3 mt-4">
+                    <button id="ai-summary-btn" onclick="generateAiSummary()" class="text-sm font-semibold text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-4 py-2 rounded-full transition flex items-center justify-center gap-2">
+                        <i class="fas fa-magic"></i> AI Elevator Pitch ✨
+                    </button>
+                    <!-- Gemini Feature 3: Job Match -->
+                    <button onclick="toggleJobMatchModal()" class="text-sm font-semibold text-teal-600 bg-teal-50 hover:bg-teal-100 border border-teal-200 px-4 py-2 rounded-full transition flex items-center justify-center gap-2">
+                        <i class="fas fa-briefcase"></i> Check Job Fit with Gemini ✨
+                    </button>
+                </div>
+                
+                <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-6">
+                    <a href="mailto:lamvuan02@gmail.com" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-xl flex items-center gap-2">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://www.linkedin.com/in/anvuituoi/" target="_blank" rel="noopener noreferrer" class="px-6 py-3 bg-white text-slate-700 border border-slate-300 font-medium rounded-lg hover:bg-slate-50 transition flex items-center gap-2">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+
+                <div class="pt-8">
+                    <p class="text-sm text-slate-500 font-semibold uppercase tracking-wider mb-3">Tech Stack & Skills</p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-3">
+                        <span class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                            <i class="fab fa-python text-blue-500"></i> Python
+                        </span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                            <i class="fas fa-database text-blue-700"></i> SAP Hana
+                        </span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                            <i class="fab fa-hubspot text-orange-500"></i> Hubspot
+                        </span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                            <i class="fas fa-robot text-teal-500"></i> ChatGPT
+                        </span>
+                        <span class="px-4 py-2 bg-white border border-slate-200 text-slate-700 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm">
+                            <i class="fas fa-tasks text-purple-500"></i> Project Mgmt
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="w-48 h-48 md:w-80 md:h-80 relative shrink-0">
+                <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
+                <div class="relative w-full h-full rounded-full border-4 border-white shadow-2xl overflow-hidden bg-slate-200 flex items-center justify-center cursor-pointer group" onclick="toggleChat()">
+                    <!-- Placeholder for User Image -->
+                    <span class="text-6xl font-bold text-slate-400 group-hover:text-primary transition">VL</span>
+                    
+                    <!-- AI Badge -->
+                    <div class="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-lg border border-purple-200 text-purple-600 animate-bounce">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section (Timeline) -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-16 text-slate-900">Professional Experience</h2>
+            
+            <div class="relative timeline-line space-y-12">
+                
+                <!-- Item 1 -->
+                <div class="relative z-10 md:grid md:grid-cols-2 md:gap-8 items-center">
+                    <div class="md:text-right mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold text-slate-900">Accountant</h3>
+                        <p class="text-primary font-semibold">Sun Phu Quoc Airways</p>
+                        <p class="text-slate-500 text-sm mt-1">06/2025 - Present | Ha Noi</p>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full border-4 border-white items-center justify-center shadow-md">
+                        <i class="fas fa-plane text-white text-xs"></i>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-100 shadow-sm md:ml-8 relative">
+                        <!-- Mobile Dot -->
+                        <div class="md:hidden absolute -left-[29px] top-6 w-5 h-5 bg-blue-500 rounded-full border-2 border-white"></div>
+                        <ul class="list-disc list-inside text-slate-600 space-y-2 text-sm">
+                            <li>Core finance setup team member during airline establishment phase.</li>
+                            <li>Supported SAP Hana implementation (FI/CO, MM, HCM, FOM modules).</li>
+                            <li>Coordinated with 5+ departments ensuring on-time system go-live.</li>
+                            <li>Setup Amadeus Revenue Accounting System for automated revenue recognition.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="relative z-10 md:grid md:grid-cols-2 md:gap-8 items-center">
+                    <div class="order-2 mb-4 md:mb-0">
+                         <!-- Content Left on Desktop -->
+                        <h3 class="text-xl font-bold text-slate-900 md:hidden">Co-founder & President</h3>
+                        <p class="text-primary font-semibold md:hidden">Fulbright Digital Humanities Lab</p>
+                         <p class="text-slate-500 text-sm mt-1 md:hidden">12/2022 - Present</p>
+
+                         <div class="bg-slate-50 p-6 rounded-lg border border-slate-100 shadow-sm md:mr-8 relative">
+                            <div class="md:hidden absolute -left-[29px] top-6 w-5 h-5 bg-indigo-500 rounded-full border-2 border-white"></div>
+                            <ul class="list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                <li>Founded student-led lab focusing on tech integration with humanities.</li>
+                                <li>Secured over $15,000 in funding and grants.</li>
+                                <li>Partnered with British Council, Goethe Institut, and Columbia University.</li>
+                                <li>Launched 7 projects engaging 400+ people across history & arts.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-indigo-500 rounded-full border-4 border-white items-center justify-center shadow-md">
+                        <i class="fas fa-university text-white text-xs"></i>
+                    </div>
+                    <div class="order-1 md:text-left hidden md:block">
+                        <h3 class="text-xl font-bold text-slate-900">Co-founder & President</h3>
+                        <p class="text-primary font-semibold">Fulbright Digital Humanities Lab</p>
+                        <p class="text-slate-500 text-sm mt-1">12/2022 - Present | HCM City</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="relative z-10 md:grid md:grid-cols-2 md:gap-8 items-center">
+                    <div class="md:text-right mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold text-slate-900">Project Coordinator</h3>
+                        <p class="text-primary font-semibold">Braille Music Access</p>
+                        <p class="text-slate-500 text-sm mt-1">10/2022 - Present</p>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-orange-500 rounded-full border-4 border-white items-center justify-center shadow-md">
+                        <i class="fas fa-music text-white text-xs"></i>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-lg border border-slate-100 shadow-sm md:ml-8 relative">
+                        <div class="md:hidden absolute -left-[29px] top-6 w-5 h-5 bg-orange-500 rounded-full border-2 border-white"></div>
+                        <ul class="list-disc list-inside text-slate-600 space-y-2 text-sm">
+                            <li>Developed "Braille Music Library" platform for the visually impaired.</li>
+                            <li>Built database of thousands of Braille scores.</li>
+                            <li>Collaborated with 20+ schools/centers for the blind.</li>
+                            <li>Secured $2,000 funding from IDP & Temasek Scholarships.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                 <!-- Item 4 -->
+                 <div class="relative z-10 md:grid md:grid-cols-2 md:gap-8 items-center">
+                    <div class="order-2 mb-4 md:mb-0">
+                        <!-- Mobile Header -->
+                        <h3 class="text-xl font-bold text-slate-900 md:hidden">Project Coordinator</h3>
+                        <p class="text-primary font-semibold md:hidden">Vietnam Studies Center</p>
+                        <p class="text-slate-500 text-sm mt-1 md:hidden">05/2024 - 06/2025</p>
+
+                         <div class="bg-slate-50 p-6 rounded-lg border border-slate-100 shadow-sm md:mr-8 relative">
+                            <div class="md:hidden absolute -left-[29px] top-6 w-5 h-5 bg-teal-500 rounded-full border-2 border-white"></div>
+                            <ul class="list-disc list-inside text-slate-600 space-y-2 text-sm">
+                                <li>Organized 20+ academic events with 2,000+ participants.</li>
+                                <li>Managed logistics, guest speakers, and promotion.</li>
+                                <li>Ensured project adherence to guidelines and deadlines.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="hidden md:flex absolute left-1/2 -translate-x-1/2 w-8 h-8 bg-teal-500 rounded-full border-4 border-white items-center justify-center shadow-md">
+                        <i class="fas fa-calendar-check text-white text-xs"></i>
+                    </div>
+                    <div class="order-1 md:text-left hidden md:block">
+                        <h3 class="text-xl font-bold text-slate-900">Project Coordinator</h3>
+                        <p class="text-primary font-semibold">Vietnam Studies Center</p>
+                        <p class="text-slate-500 text-sm mt-1">05/2024 - 06/2025</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects & Research Section -->
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-slate-900 text-center">Research & Featured Projects</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <!-- Research Paper 1 -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-8 border border-slate-100 flex flex-col">
+                    <div class="mb-4 text-primary">
+                        <i class="fas fa-book-open text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Vân Tiên Spoken Poetry</h3>
+                    <p class="text-slate-600 mb-4 flex-grow">
+                        Published paper titled "Vân Tiên Spoken Poetry: Something to Feel" in "Truyện thơ nôm Lục Vân Tiên Song Ngữ Việt - Hàn."
+                    </p>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Published Research</span>
+                </div>
+
+                <!-- Research Paper 2 -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-8 border border-slate-100 flex flex-col">
+                    <div class="mb-4 text-indigo-500">
+                        <i class="fas fa-network-wired text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Digital Humanities Platform</h3>
+                    <p class="text-slate-600 mb-4 flex-grow">
+                        Presented research on "Developing a Centralized Digital Humanities Platform for Vietnam: Opportunities and Challenges" at the Engaging with Vietnam International Conference 2023.
+                    </p>
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Conference Presentation</span>
+                </div>
+
+                <!-- Braille Project -->
+                <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition p-8 border border-slate-100 flex flex-col md:col-span-2 relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                        <i class="fas fa-music text-9xl"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fas fa-hands-helping text-orange-500 text-2xl"></i>
+                            <h3 class="text-2xl font-bold text-slate-900">Braille Music Access</h3>
+                        </div>
+                        <p class="text-slate-600 mb-4 max-w-2xl">
+                            A platform providing Braille music scores to the visually impaired community. We built a database of thousands of scores and collaborated with over 20 schools.
+                        </p>
+                        <div class="flex gap-2">
+                            <span class="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full font-bold">Social Impact</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full font-bold">Tech for Good</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: Press / Media (Vertical Layout) -->
+    <section id="press" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-slate-900 text-center">In the Media</h2>
+            
+            <div class="space-y-8">
+                <!-- Press Item New: Thanh Nien -->
+                <a href="https://thanhnien.vn/tan-khoa-truong-fulbright-bao-ton-tri-thuc-nhan-van-bang-tu-duy-lien-nganh-185250703094616573.htm" target="_blank" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
+                        <img src="https://placehold.co/600x400/1e3a8a/FFFFFF?text=Fulbright+Graduation" alt="Lâm Vũ An nhận bằng tốt nghiệp Fulbright" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
+                            Báo Thanh Niên
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
+                            "Tân khoa Trường Fulbright bảo tồn tri thức nhân văn bằng tư duy liên ngành"
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                            Lâm Vũ An, tân cử nhân tốt nghiệp Danh dự, đã ứng dụng tư duy liên ngành và công nghệ số vào các dự án cộng đồng như Braille Music Access và bảo tồn di sản văn hóa.
+                        </p>
+                        <div class="flex items-center text-xs font-semibold text-primary mt-auto">
+                            Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Press Item 1 -->
+                <a href="#" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/600x400/1e3a8a/FFFFFF?text=Braille+Music+Project" alt="Braille Music" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
+                            Tuổi Trẻ
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
+                            "Dự án thư viện nhạc Braille: Ánh sáng cho người khiếm thị"
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                            Gặp gỡ Lâm Vũ An, chàng trai trẻ với khát vọng xóa bỏ rào cản âm nhạc cho cộng đồng người mù tại Việt Nam thông qua nền tảng công nghệ số hóa...
+                        </p>
+                        <div class="flex items-center text-xs font-semibold text-primary mt-auto">
+                            Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Press Item 2: RMIT Award (UPDATED IMAGE) -->
+                <a href="#" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
+                         <!-- Sử dụng ảnh M (47) (1).JPG bạn đã tải lên -->
+                        <img src="M (47) (1).JPG" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/f59e0b/FFFFFF?text=RMIT+Award+Image+Missing';" 
+                             alt="RMIT Accessibility Design Award Winner" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
+                            VnExpress
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
+                            "Sinh viên Fulbright thắng giải thiết kế tiếp cận RMIT"
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                            Vượt qua hàng trăm thí sinh, giải pháp công nghệ hỗ trợ người khuyết tật của đội thi đến từ Đại học Fulbright Việt Nam đã xuất sắc giành giải Nhất.
+                        </p>
+                        <div class="flex items-center text-xs font-semibold text-primary mt-auto">
+                            Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Press Item 3 -->
+                <a href="#" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
+                         <!-- Placeholder Image -->
+                        <img src="https://placehold.co/600x400/2c5d63/FFFFFF?text=Digital+Heritage" alt="Digital Heritage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
+                            VietnamPlus
+                        </div>
+                    </div>
+                    <div class="p-6 md:w-2/3 flex flex-col justify-center">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
+                            "Nhân văn số: Hướng đi mới bảo tồn di sản Việt"
+                        </h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
+                            Lâm Vũ An và Fulbright Digital Humanities Lab đang nỗ lực số hóa các tác phẩm văn học cổ điển, mang Lục Vân Tiên đến gần hơn với thế hệ Gen Z...
+                        </p>
+                        <div class="flex items-center text-xs font-semibold text-primary mt-auto">
+                            Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Awards Section -->
+    <section id="awards" class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12">
+                
+                <!-- Education -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-graduation-cap text-primary"></i> Education
+                    </h2>
+                    <div class="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
+                        <h3 class="text-lg font-bold text-slate-900">Fulbright University Vietnam</h3>
+                        <p class="text-slate-600">Bachelor of Arts (Honors Degree)</p>
+                        <div class="mt-2 text-sm text-slate-500 space-y-1">
+                            <p><strong>Major:</strong> Vietnam Studies</p>
+                            <p><strong>Minor:</strong> Economics</p>
+                            <p><strong>GPA:</strong> 3.51</p>
+                            <p><strong>Period:</strong> 08/2021 - 06/2025</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6">
+                        <h3 class="font-bold text-slate-900 mb-2">Languages</h3>
+                        <div class="space-y-2">
+                            <div class="flex justify-between items-center text-sm">
+                                <span>English (Advanced)</span>
+                                <div class="w-1/2 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span>Chinese (Intermediate)</span>
+                                <div class="w-1/2 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span>Khmer (Beginner)</span>
+                                <div class="w-1/2 bg-slate-200 rounded-full h-2">
+                                    <div class="bg-yellow-500 h-2 rounded-full" style="width: 30%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards -->
+                <div>
+                    <h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                        <i class="fas fa-trophy text-accent"></i> Honors & Awards
+                    </h2>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4 items-start p-3 hover:bg-white hover:shadow-sm rounded-lg transition border border-transparent hover:border-slate-100">
+                            <i class="fas fa-medal text-yellow-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">First Prize - RMIT Accessibility Design 2024</strong>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start p-3 hover:bg-white hover:shadow-sm rounded-lg transition border border-transparent hover:border-slate-100">
+                            <i class="fas fa-medal text-yellow-500 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">First Prize - GDSC IDEA CONTEST 2023: THINK</strong>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start p-3 hover:bg-white hover:shadow-sm rounded-lg transition border border-transparent hover:border-slate-100">
+                            <i class="fas fa-award text-slate-400 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">Top 5 - Microsoft ASEAN AI for Accessibility Hackathon 2024</strong>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start p-3 hover:bg-white hover:shadow-sm rounded-lg transition border border-transparent hover:border-slate-100">
+                            <i class="fas fa-award text-amber-700 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">Third Prize - Policy Pitch Adventure 2024</strong>
+                                <span class="text-sm text-slate-500">Navigating Digital Transformation Challenges</span>
+                            </div>
+                        </li>
+                        <li class="flex gap-4 items-start p-3 hover:bg-white hover:shadow-sm rounded-lg transition border border-transparent hover:border-slate-100">
+                            <i class="fas fa-plane text-blue-400 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">Vietnam Delegate</strong>
+                                <span class="text-sm text-slate-500">Regen Asia Summit (RAS) 2025 & Asian Undergraduate Symposium (AUS) 2025, Singapore</span>
+                            </div>
+                        </li>
+                         <li class="flex gap-4 items-start p-3 hover:bg-white hover:shadow-sm rounded-lg transition border border-transparent hover:border-slate-100">
+                            <i class="fas fa-film text-purple-400 mt-1"></i>
+                            <div>
+                                <strong class="block text-slate-900">Second Prize - Film Essay</strong>
+                                <span class="text-sm text-slate-500">"Negotiating with Modernity" - Collab with Dartmouth College</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <section id="contact" class="bg-slate-900 text-white py-16">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Let's Connect</h2>
+            <p class="text-slate-400 mb-8">
+                I am currently open to opportunities in Project Coordination, Digital Humanities, and Accessibility Design.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
+                <a href="tel:0838656959" class="flex items-center gap-2 hover:text-blue-400 transition">
+                    <i class="fas fa-phone"></i> 0838656959
+                </a>
+                <span class="hidden md:block text-slate-700">|</span>
+                <a href="mailto:lamvuan02@gmail.com" class="flex items-center gap-2 hover:text-blue-400 transition">
+                    <i class="fas fa-envelope"></i> lamvuan02@gmail.com
+                </a>
+                <span class="hidden md:block text-slate-700">|</span>
+                <a href="#" class="flex items-center gap-2 hover:text-blue-400 transition">
+                    <i class="fas fa-map-marker-alt"></i> Ho Chi Minh City, Vietnam
+                </a>
+            </div>
+            
+            <p class="text-sm text-slate-600">© 2025 Vu An Lam. All Rights Reserved.</p>
+        </div>
+    </section>
+
+    <!-- Gemini AI Chat Widget -->
+    <div id="ai-chat-widget" class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+        
+        <!-- Chat Window -->
+        <div id="chat-window" class="hidden bg-white w-80 md:w-96 rounded-2xl shadow-2xl border border-slate-200 mb-4 overflow-hidden flex flex-col transition-all origin-bottom-right transform scale-95 opacity-0 duration-200 ease-in-out">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-primary to-purple-600 p-4 flex justify-between items-center text-white">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-robot"></i>
+                    <div>
+                        <h3 class="font-bold text-sm">Ask An's AI Assistant ✨</h3>
+                        <p class="text-xs text-blue-100 opacity-90">Powered by Gemini</p>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-white/80 hover:text-white"><i class="fas fa-times"></i></button>
+            </div>
+            
+            <!-- Messages Area -->
+            <div id="chat-messages" class="h-80 overflow-y-auto p-4 bg-slate-50 space-y-3">
+                <div class="flex gap-2">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-primary text-xs"><i class="fas fa-robot"></i></div>
+                    <div class="bg-white p-3 rounded-lg rounded-tl-none text-sm text-slate-700 shadow-sm border border-slate-100">
+                        Hello! I'm An's virtual assistant. Ask me anything about his projects, skills, or experience!
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Input Area -->
+            <div class="p-3 bg-white border-t border-slate-100">
+                <form id="chat-form" onsubmit="handleChatSubmit(event)" class="flex gap-2">
+                    <input type="text" id="chat-input" placeholder="Ask about experience, skills..." class="flex-1 text-sm px-3 py-2 bg-slate-50 border border-slate-200 rounded-full focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/20 transition">
+                    <button type="submit" class="w-9 h-9 bg-primary text-white rounded-full flex items-center justify-center hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fas fa-paper-plane text-xs"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Float Button -->
+        <button onclick="toggleChat()" class="w-14 h-14 bg-gradient-to-r from-primary to-purple-600 rounded-full text-white shadow-lg hover:shadow-xl hover:scale-105 transition flex items-center justify-center animate-float group">
+            <i class="fas fa-comment-dots text-2xl group-hover:hidden"></i>
+            <i class="fas fa-sparkles text-2xl hidden group-hover:block animate-pulse"></i>
+        </button>
+    </div>
+
+    <!-- Gemini Job Fit Modal -->
+    <div id="job-fit-modal" class="fixed inset-0 z-[60] hidden bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-fade-in-up">
+            <div class="bg-gradient-to-r from-teal-600 to-teal-400 p-6 text-white flex justify-between items-start">
+                <div>
+                    <h3 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fas fa-briefcase"></i> Job Match Analyzer
+                    </h3>
+                    <p class="text-teal-100 text-sm mt-1">Paste a job description to see if I'm a good fit!</p>
+                </div>
+                <button onclick="toggleJobMatchModal()" class="text-white/80 hover:text-white transition"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-6">
+                <textarea id="jd-input" rows="4" class="w-full p-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-sm mb-4" placeholder="Paste Job Description (JD) here..."></textarea>
+                
+                <div id="job-fit-result" class="hidden mb-4 p-4 bg-teal-50 border border-teal-100 rounded-lg">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="text-3xl font-bold text-teal-600" id="fit-score">--%</div>
+                        <div class="text-sm font-semibold text-teal-800">Match Score</div>
+                    </div>
+                    <p class="text-sm text-slate-700" id="fit-explanation">Analyzing...</p>
+                </div>
+
+                <button id="analyze-btn" onclick="analyzeJobMatch()" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-lg transition shadow-md flex items-center justify-center gap-2">
+                    <i class="fas fa-search"></i> Analyze Fit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                menu.classList.add('hidden'); // Close mobile menu on click
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // --- GEMINI AI INTEGRATION ---
+        const apiKey = ""; // System will inject key here
+        
+        // Context for the AI (The Resume Data)
+        const resumeContext = `
+            You are the AI assistant for Vu An Lam's portfolio website. 
+            Answer questions professionally based ONLY on the following resume data. Be concise, friendly, and use an enthusiastic tone.
+            
+            NAME: Vu An Lam
+            CONTACT: 0838656959, lamvuan02@gmail.com, Ho Chi Minh City, Vietnam.
+            EDUCATION: Fulbright University Vietnam (Bachelor of Arts, Honors). Major: Vietnam Studies, Minor: Economics. GPA: 3.51 (08/2021-06/2025).
+            
+            EXPERIENCE:
+            1. Accountant at Sun Phu Quoc Airways (06/2025-Present, Ha Noi): Core finance setup team, SAP Hana implementation (FI/CO, MM, HCM, FOM), Setup Amadeus Revenue Accounting System.
+            2. Co-founder & President at Fulbright Digital Humanities Lab (12/2022-Present): Founded lab, secured $15k funding, partnered with British Council/Goethe Institut, 7 projects/400+ people.
+            3. Project Coordinator at Braille Music Access (10/2022-Present): "Braille Music Library" platform for visually impaired, built database, 20+ partner schools, secured $2k funding (IDP/Temasek).
+            4. Project Coordinator at Vietnam Studies Center (05/2024-06/2025): Organized 20+ academic events (2000+ participants).
+            
+            AWARDS:
+            - 1st Prize RMIT Accessibility Design 2024
+            - 1st Prize GDSC IDEA CONTEST 2023
+            - Top 5 Microsoft ASEAN AI for Accessibility Hackathon 2024
+            - 3rd Prize Policy Pitch Adventure 2024
+            - Vietnam Delegate at Regen Asia Summit 2025 & Asian Undergraduate Symposium 2025 (Singapore).
+            
+            SKILLS: Python, SAP Hana, Hubspot, ChatGPT, Project Mgmt. Languages: English (Adv), Chinese (Int), Khmer (Beg).
+            
+            RESEARCH: "Van Tien Spoken Poetry", "Digital Humanities Platform for Vietnam".
+        `;
+
+        // Chat Widget Logic
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        let isChatOpen = false;
+
+        function toggleChat() {
+            isChatOpen = !isChatOpen;
+            if (isChatOpen) {
+                chatWindow.classList.remove('hidden');
+                setTimeout(() => {
+                    chatWindow.classList.remove('scale-95', 'opacity-0');
+                    chatWindow.classList.add('scale-100', 'opacity-100');
+                    document.getElementById('chat-input').focus();
+                }, 10);
+            } else {
+                chatWindow.classList.remove('scale-100', 'opacity-100');
+                chatWindow.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    chatWindow.classList.add('hidden');
+                }, 200);
+            }
+        }
+
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if (!message) return;
+
+            // Add User Message
+            addMessage(message, 'user');
+            input.value = '';
+            
+            // Show Loading
+            const loadingId = addLoading();
+
+            try {
+                const response = await callGeminiAPI(message);
+                removeMessage(loadingId);
+                addMessage(response, 'bot');
+            } catch (error) {
+                console.error(error);
+                removeMessage(loadingId);
+                addMessage("Sorry, I'm having trouble connecting to the AI right now.", 'bot');
+            }
+        }
+
+        function addMessage(text, sender) {
+            const div = document.createElement('div');
+            div.className = `flex gap-2 ${sender === 'user' ? 'flex-row-reverse' : ''}`;
+            
+            const avatar = sender === 'bot' 
+                ? `<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-primary text-xs"><i class="fas fa-robot"></i></div>`
+                : `<div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center shrink-0 text-slate-600 text-xs"><i class="fas fa-user"></i></div>`;
+                
+            const bubbleClass = sender === 'bot'
+                ? 'bg-white text-slate-700 rounded-tl-none border border-slate-100'
+                : 'bg-primary text-white rounded-tr-none';
+
+            div.innerHTML = `
+                ${avatar}
+                <div class="${bubbleClass} p-3 rounded-lg shadow-sm text-sm max-w-[80%]">
+                    ${text}
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return div; // Return for removal if needed
+        }
+
+        function addLoading() {
+            const id = 'loading-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = 'flex gap-2';
+            div.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-primary text-xs"><i class="fas fa-robot"></i></div>
+                <div class="bg-white p-4 rounded-lg rounded-tl-none shadow-sm border border-slate-100 flex gap-1 items-center">
+                    <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                    <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                    <div class="w-2 h-2 bg-slate-400 rounded-full typing-dot"></div>
+                </div>
+            `;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return id;
+        }
+
+        function removeMessage(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        // --- GEMINI API CALL ---
+        async function callGeminiAPI(userQuery) {
+            const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+            
+            const payload = {
+                contents: [{
+                    parts: [{
+                        text: `Context: ${resumeContext}\n\nUser Question: ${userQuery}\n\nAnswer (Keep it under 3 sentences unless asked for details):`
+                    }]
+                }]
+            };
+
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            return data.candidates[0].content.parts[0].text;
+        }
+
+        // --- FEATURE 2: ELEVATOR PITCH GENERATOR ---
+        async function generateAiSummary() {
+            const btn = document.getElementById('ai-summary-btn');
+            const bio = document.getElementById('hero-bio');
+            
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+            btn.disabled = true;
+
+            try {
+                const pitch = await callGeminiAPI("Generate a 1-sentence creative and professional elevator pitch for Vu An Lam based on his resume. Vary the style (e.g., sometimes focus on impact, sometimes on skills). Do not include quotes.");
+                
+                // Typewriter effect for the new bio
+                bio.style.opacity = 0;
+                setTimeout(() => {
+                    bio.textContent = pitch;
+                    bio.style.opacity = 1;
+                    bio.classList.add('text-primary'); // Highlight change
+                    setTimeout(() => bio.classList.remove('text-primary'), 1000);
+                }, 300);
+
+            } catch (e) {
+                alert("Could not generate summary. Please check API key.");
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // --- FEATURE 3: JOB FIT ANALYZER ---
+        function toggleJobMatchModal() {
+            const modal = document.getElementById('job-fit-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        async function analyzeJobMatch() {
+            const jdInput = document.getElementById('jd-input').value;
+            const resultDiv = document.getElementById('job-fit-result');
+            const scoreEl = document.getElementById('fit-score');
+            const explanationEl = document.getElementById('fit-explanation');
+            const btn = document.getElementById('analyze-btn');
+
+            if (!jdInput.trim()) {
+                alert("Please paste a job description first!");
+                return;
+            }
+
+            // UI Loading State
+            const originalBtnText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+            btn.disabled = true;
+            resultDiv.classList.add('hidden');
+
+            const prompt = `
+                ACT AS A RECRUITER. 
+                RESUME: ${resumeContext}
+                JOB DESCRIPTION: ${jdInput}
+                
+                TASK: Compare the Resume with the Job Description.
+                OUTPUT FORMAT: Return a JSON object with two fields: "score" (a number 0-100) and "explanation" (max 3 sentences explaining the match).
+                Do not include markdown formatting like \`\`\`json. Just the raw JSON.
+            `;
+
+            try {
+                const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }]
+                };
+
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                const data = await response.json();
+                let text = data.candidates[0].content.parts[0].text;
+                // Cleanup potentially markdown
+                text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+                
+                const result = JSON.parse(text);
+
+                scoreEl.textContent = result.score + "%";
+                explanationEl.textContent = result.explanation;
+                
+                // Color coding
+                if (result.score >= 80) scoreEl.className = "text-3xl font-bold text-green-600";
+                else if (result.score >= 50) scoreEl.className = "text-3xl font-bold text-yellow-600";
+                else scoreEl.className = "text-3xl font-bold text-red-600";
+
+                resultDiv.classList.remove('hidden');
+
+            } catch (error) {
+                console.error(error);
+                alert("Analysis failed. Please try again.");
+            } finally {
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            }
+            
+        }
+    </script>
+</body>
+</html>
