@@ -114,17 +114,7 @@
                     A Fulbright University Vietnam graduate specializing in Vietnam Studies and Economics. Passionate about leveraging technology for social impact, digital humanities, and aviation.
                 </p>
 
-                <!-- Gemini Feature 1: AI Summary -->
-                <div class="flex flex-col md:flex-row justify-center md:justify-start gap-3 mt-4">
-                    <button id="ai-summary-btn" onclick="generateAiSummary()" class="text-sm font-semibold text-purple-600 bg-purple-50 hover:bg-purple-100 border border-purple-200 px-4 py-2 rounded-full transition flex items-center justify-center gap-2">
-                        <i class="fas fa-magic"></i> AI Elevator Pitch ✨
-                    </button>
-                    <!-- Gemini Feature 3: Job Match -->
-                    <button onclick="toggleJobMatchModal()" class="text-sm font-semibold text-teal-600 bg-teal-50 hover:bg-teal-100 border border-teal-200 px-4 py-2 rounded-full transition flex items-center justify-center gap-2">
-                        <i class="fas fa-briefcase"></i> Check Job Fit with Gemini ✨
-                    </button>
-                </div>
-                
+                              
                 <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-6">
                     <a href="mailto:lamvuan02@gmail.com" class="px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-blue-800 transition shadow-lg hover:shadow-xl flex items-center gap-2">
                         <i class="fas fa-envelope"></i> Email Me
@@ -159,9 +149,10 @@
             <div class="w-48 h-48 md:w-80 md:h-80 relative shrink-0">
                 <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-purple-500 rounded-full blur-2xl opacity-30 animate-pulse"></div>
                 <div class="relative w-full h-full rounded-full border-4 border-white shadow-2xl overflow-hidden bg-slate-200 flex items-center justify-center cursor-pointer group" onclick="toggleChat()">
+                    
                     <!-- CẬP NHẬT: Thay thế thẻ span bằng thẻ img dưới đây -->
                     <!-- Hãy chắc chắn bạn đã tải file ảnh 'avatar.png' lên GitHub -->
-                    <img src="avatar.jpg" 
+                    <img src="avatar.png" 
                          onerror="this.onerror=null; this.src='https://placehold.co/400x400/1e3a8a/FFFFFF?text=VL';" 
                          alt="Vu An Lam" 
                          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
@@ -345,10 +336,13 @@
             <h2 class="text-3xl font-bold mb-12 text-slate-900 text-center">In the Media</h2>
             
             <div class="space-y-8">
-                <!-- Press Item New: Thanh Nien -->
+                <!-- Press Item 1: Thanh Nien -->
                 <a href="https://thanhnien.vn/tan-khoa-truong-fulbright-bao-ton-tri-thuc-nhan-van-bang-tu-duy-lien-nganh-185250703094616573.htm" target="_blank" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                     <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
-                        <img src="Fulbright.jpg" alt="Lâm Vũ An nhận bằng tốt nghiệp Fulbright" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="fulbright.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/1e3a8a/FFFFFF?text=Fulbright+Graduation';"
+                             alt="Lâm Vũ An nhận bằng tốt nghiệp Fulbright" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
                             Báo Thanh Niên
                         </div>
@@ -366,21 +360,23 @@
                     </div>
                 </a>
 
-                <!-- Press Item 1 -->
-                <a href="#" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <!-- Press Item 2: Fulbright Student Feature -->
+                <a href="https://fulbright.edu.vn/vi/sinh-vien-fulbright-tien-phong-dan-dat-du-an-nhan-van-so/" target="_blank" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                     <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
                         <!-- Placeholder Image -->
-                        <img src="https://placehold.co/600x400/1e3a8a/FFFFFF?text=Braille+Music+Project" alt="Braille Music" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="RMIT.JPG" 
+                             alt="Sinh viên Fulbright tiên phong" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
-                            Tuổi Trẻ
+                            Fulbright University
                         </div>
                     </div>
                     <div class="p-6 md:w-2/3 flex flex-col justify-center">
                         <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
-                            "Dự án thư viện nhạc Braille: Ánh sáng cho người khiếm thị"
+                            "Sinh viên Fulbright tiên phong dẫn dắt dự án nhân văn số"
                         </h3>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                            Gặp gỡ Lâm Vũ An, chàng trai trẻ với khát vọng xóa bỏ rào cản âm nhạc cho cộng đồng người mù tại Việt Nam thông qua nền tảng công nghệ số hóa...
+                            Lâm Vũ An, trưởng nhóm DHLab@Fulbright, tiên phong ứng dụng công nghệ vào nhân văn với dự án Braille Music Access đạt giải nhất cuộc thi thiết kế tiếp cận RMIT.
                         </p>
                         <div class="flex items-center text-xs font-semibold text-primary mt-auto">
                             Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
@@ -388,46 +384,23 @@
                     </div>
                 </a>
 
-                <!-- Press Item 2: RMIT Award (UPDATED IMAGE) -->
-                <a href="#" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
-                         <!-- Sử dụng ảnh M (47) (1).JPG bạn đã tải lên -->
-                        <img src="a.JPG" 
-                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/f59e0b/FFFFFF?text=RMIT+Award+Image+Missing';" 
-                             alt="RMIT Accessibility Design Award Winner" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 grayscale group-hover:grayscale-0">
-                        <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
-                            VnExpress
-                        </div>
-                    </div>
-                    <div class="p-6 md:w-2/3 flex flex-col justify-center">
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
-                            "Sinh viên Fulbright thắng giải thiết kế tiếp cận RMIT"
-                        </h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                            Vượt qua hàng trăm thí sinh, giải pháp công nghệ hỗ trợ người khuyết tật của đội thi đến từ Đại học Fulbright Việt Nam đã xuất sắc giành giải Nhất.
-                        </p>
-                        <div class="flex items-center text-xs font-semibold text-primary mt-auto">
-                            Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
-                        </div>
-                    </div>
-                </a>
-
-                <!-- Press Item 3 -->
-                <a href="#" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <!-- Press Item 3: DHLab Feature -->
+                <a href="https://fulbright.edu.vn/vi/dhlabfulbright-kham-pha-su-giao-thoa-giua-cong-nghe-so-va-khoa-hoc-nhan-van/" target="_blank" class="group flex flex-col md:flex-row bg-slate-50 border border-slate-100 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                     <div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden shrink-0">
                          <!-- Placeholder Image -->
-                        <img src="https://placehold.co/600x400/2c5d63/FFFFFF?text=Digital+Heritage" alt="Digital Heritage" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="a.pjg" 
+                             alt="DHLab Fulbright" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         <div class="absolute top-3 left-3 bg-white/90 backdrop-blur text-primary text-[10px] font-bold px-3 py-1 rounded-full uppercase shadow-sm">
-                            VietnamPlus
+                            Fulbright University
                         </div>
                     </div>
                     <div class="p-6 md:w-2/3 flex flex-col justify-center">
                         <h3 class="text-xl font-bold text-slate-900 mb-3 leading-snug group-hover:text-secondary transition">
-                            "Nhân văn số: Hướng đi mới bảo tồn di sản Việt"
+                            "DHLab@Fulbright: Khám phá sự giao thoa giữa Công nghệ số và Khoa học Nhân văn"
                         </h3>
                         <p class="text-sm text-slate-600 leading-relaxed mb-4 line-clamp-3">
-                            Lâm Vũ An và Fulbright Digital Humanities Lab đang nỗ lực số hóa các tác phẩm văn học cổ điển, mang Lục Vân Tiên đến gần hơn với thế hệ Gen Z...
+                            DHLab@Fulbright là sáng kiến tiên phong kết hợp công nghệ số với khoa học xã hội và nhân văn, thúc đẩy đổi mới giáo dục và bảo tồn di sản văn hóa tại Việt Nam.
                         </p>
                         <div class="flex items-center text-xs font-semibold text-primary mt-auto">
                             Read Article <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
@@ -648,11 +621,20 @@
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                menu.classList.add('hidden'); // Close mobile menu on click
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                // SỬA LỖI: Kiểm tra href trước khi query
+                const targetId = this.getAttribute('href');
+                if (!targetId || targetId === '#') {
+                    e.preventDefault();
+                    return; // Bỏ qua nếu là link placeholder
+                }
+
+                if (document.querySelector(targetId)) {
+                    e.preventDefault();
+                    menu.classList.add('hidden'); // Close mobile menu on click
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
@@ -900,11 +882,7 @@
                 btn.innerHTML = originalBtnText;
                 btn.disabled = false;
             }
-            
         }
     </script>
 </body>
 </html>
-
-
-
