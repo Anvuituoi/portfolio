@@ -1,0 +1,118 @@
+{
+  "base": "http://localhost:4173/",
+  "widths": [
+    {
+      "width": 390,
+      "consoleErrors": [],
+      "scrollWidth": 390,
+      "clientWidth": 390,
+      "offenders": [
+        "sky-sun",
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {}
+      ],
+      "horizontalScroll": false
+    },
+    {
+      "width": 768,
+      "consoleErrors": [],
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "offenders": [
+        "sky-sun"
+      ],
+      "horizontalScroll": false
+    },
+    {
+      "width": 1440,
+      "consoleErrors": [],
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "offenders": [
+        "sky-sun"
+      ],
+      "horizontalScroll": false
+    },
+    {
+      "width": 1920,
+      "consoleErrors": [],
+      "scrollWidth": 1920,
+      "clientWidth": 1920,
+      "offenders": [
+        "sky-sun"
+      ],
+      "horizontalScroll": false
+    }
+  ],
+  "axe": [
+    {
+      "mode": "live desktop",
+      "criticalOrSerious": [],
+      "moderateOrMinor": []
+    },
+    {
+      "mode": "reduced motion desktop",
+      "criticalOrSerious": [],
+      "moderateOrMinor": []
+    },
+    {
+      "mode": "no WebGL desktop",
+      "criticalOrSerious": [],
+      "moderateOrMinor": []
+    },
+    {
+      "mode": "mobile",
+      "criticalOrSerious": [],
+      "moderateOrMinor": []
+    },
+    {
+      "mode": "flight manifest",
+      "criticalOrSerious": []
+    }
+  ],
+  "privacy": [
+    {
+      "mode": "live desktop",
+      "phoneLike": [],
+      "gpa": false
+    },
+    {
+      "mode": "reduced motion desktop",
+      "phoneLike": [],
+      "gpa": false
+    },
+    {
+      "mode": "no WebGL desktop",
+      "phoneLike": [],
+      "gpa": false
+    },
+    {
+      "mode": "mobile",
+      "phoneLike": [],
+      "gpa": false
+    }
+  ],
+  "screenshots": [
+    "screenshots/01-gate-desktop.png",
+    "screenshots/02-lounge-desktop.png",
+    "screenshots/03-boarding-desktop.png",
+    "screenshots/04-takeoff-desktop.png",
+    "screenshots/05-climb-desktop.png",
+    "screenshots/06-cruise-desktop.png",
+    "screenshots/07-descent-desktop.png",
+    "screenshots/08-contact-desktop.png",
+    "screenshots/01-gate-mobile.png",
+    "screenshots/02-lounge-mobile.png",
+    "screenshots/03-boarding-mobile.png",
+    "screenshots/04-takeoff-mobile.png",
+    "screenshots/05-climb-mobile.png",
+    "screenshots/06-cruise-mobile.png",
+    "screenshots/07-descent-mobile.png",
+    "screenshots/08-contact-mobile.png"
+  ]
+}
