@@ -14,6 +14,7 @@
 }
 
 :root {
+  --nav-bg: rgba(229, 228, 226, 0.86);
   --silver: #e5e4e2;
   --gold: #eaaa00;
   --burgundy: #3a0f34;
@@ -227,6 +228,23 @@ main {
   color: var(--nav-ink, var(--burgundy));
   pointer-events: none;
 }
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -28px 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--nav-bg) 0, var(--nav-bg) 58%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent);
+  mask-image: linear-gradient(180deg, #000 62%, transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+html[data-scrolled] .nav::before {
+  opacity: 1;
+}
 .nav > * {
   pointer-events: auto;
 }
@@ -261,6 +279,7 @@ main {
 html[data-sky='dark'],
 html[data-chrome='dark'] {
   --nav-ink: var(--silver);
+  --nav-bg: rgba(34, 8, 31, 0.8);
 }
 
 /* Altimeter */
@@ -668,12 +687,18 @@ html.motion-off *::after {
   position: absolute;
   margin: 0;
   left: var(--gutter);
-  top: 21vh;
-  font-size: clamp(56px, 9.2vw, 200px);
+  top: 17vh;
+  /* bounded by height too, so short windows keep room for the tagline */
+  font-size: clamp(44px, min(9.2vw, 15.5vh), 200px);
   line-height: 0.94;
   color: var(--burgundy);
   display: flex;
   flex-direction: column;
+}
+.hero-front .hero-h1 {
+  /* a silver outline separates the letters from the burgundy tail as it passes behind */
+  -webkit-text-stroke: 0.06em #e5e4e2;
+  paint-order: stroke fill;
 }
 .hero-l2 {
   padding-left: 0.62em;
@@ -686,7 +711,7 @@ html.motion-off *::after {
   position: absolute;
   left: var(--gutter);
   right: calc(var(--gutter) + 130px);
-  bottom: 7vh;
+  bottom: 6vh;
   display: grid;
   grid-template-columns: minmax(0, 30rem) auto;
   justify-content: space-between;
@@ -1224,7 +1249,7 @@ html.motion-off *::after {
   top: 0;
   height: 100vh;
   height: 100svh;
-  padding-top: 12vh;
+  padding-top: max(80px, 10vh);
   padding-bottom: 0;
   box-sizing: border-box;
   overflow: hidden;
@@ -1236,9 +1261,21 @@ html.motion-off *::after {
 .takeoff-live .takeoff-col::before {
   content: '';
   position: absolute;
-  inset: -12vh -160px -40vh calc(-1 * var(--gutter));
-  background: linear-gradient(90deg, rgba(236, 234, 229, 0.96) 62%, rgba(236, 234, 229, 0));
+  inset: -12vh -220px -40vh calc(-1 * var(--gutter));
+  /* scrim + blur: the list stays readable while the fuselage passes behind it */
+  background: linear-gradient(90deg, rgba(236, 234, 229, 0.94) 0, rgba(236, 234, 229, 0.94) 78%, rgba(236, 234, 229, 0));
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  -webkit-mask-image: linear-gradient(90deg, #000 78%, transparent);
+  mask-image: linear-gradient(90deg, #000 78%, transparent);
   z-index: -1;
+}
+.runway-key {
+  margin: -10px 0 14px;
+  font: 500 10.5px/1.5 var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
 .takeoff-live .section-h {
   font-size: clamp(40px, 4.6vw, 80px);
@@ -1328,11 +1365,7 @@ html.motion-off *::after {
   width: 1px;
   height: 1px;
 }
-@media (max-width: 899px) {
-  .takeoff-col::before {
-    display: none;
-  }
-}
+
 
 /* ------------------------------ 05 Climb ------------------------------ */
 .climb {
@@ -1470,13 +1503,17 @@ html.motion-off *::after {
 }
 .flap {
   display: flex;
-  gap: 2px;
+  gap: 1px;
+}
+.flap-gap {
+  display: inline-block;
+  width: 0.55em;
 }
 .flap-cell {
   display: inline-grid;
   place-items: center;
-  width: 1.15em;
-  height: 1.55em;
+  width: 0.98em;
+  height: 1.5em;
   background: linear-gradient(180deg, #2a1027 49%, #160514 51%);
   color: #f1ede6;
   font: 500 13px/1 var(--font-mono);
@@ -1965,7 +2002,7 @@ html.motion-off *::after {
   .modal-grid {
     grid-template-columns: 1fr;
   }
-  .cabin-cut {
+  html[data-mode='still'] .cabin-cut {
     position: relative;
     right: auto;
     top: auto;
@@ -1975,13 +2012,20 @@ html.motion-off *::after {
     box-shadow: 0 0 0 12px #ddd6cd, 0 0 0 14px #b9aea3;
     overflow: hidden;
   }
-  .descent-stage {
+  html[data-mode='still'] .descent-stage {
     background: #ebe6df;
     display: flex;
     flex-direction: column-reverse;
   }
-  .descent-text {
+  html[data-mode='still'] .descent-text {
     max-width: none;
+  }
+  html[data-mode='live'] .cabin-cut {
+    right: var(--gutter);
+    width: 30vw;
+  }
+  html[data-mode='live'] .descent-text {
+    max-width: 58vw;
   }
   .climb-intro {
     min-height: 70vh;
@@ -1995,6 +2039,16 @@ html.motion-off *::after {
 @media (max-height: 760px) and (min-width: 900px) {
   .takeoff-live .runway-detail {
     display: none;
+  }
+}
+/* The compact altimeter is a bar fixed at the bottom: keep content clear of it */
+@media (max-width: 899px) {
+  main,
+  .footer {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
+  }
+  .takeoff-live .takeoff-stage {
+    padding-bottom: calc(84px + env(safe-area-inset-bottom));
   }
 }
 .cabin-img {
@@ -2026,7 +2080,9 @@ html.motion-off *::after {
 
 /* Still mode: poster frames sit behind the content, so long text gets a light scrim */
 html[data-mode='still'] .takeoff-col {
-  background: rgba(236, 234, 229, 0.92);
+  background: rgba(236, 234, 229, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
   padding: 18px;
   margin-left: -18px;
 }
@@ -2087,4 +2143,35 @@ html[data-mode='still'] .contact {
 }
 .modal-ext a {
   color: var(--gold);
+}
+
+/*
+  Takeoff on narrow or short live screens: the pinned 100vh stage cannot hold eight milestones
+  (and the compact altimeter bar sits at the bottom), so the list scrolls normally instead.
+  The 3D take-off still plays behind it, driven by scroll.
+*/
+@media (max-width: 899px), (max-height: 720px) {
+  .takeoff-live {
+    height: auto;
+  }
+  .takeoff-live .takeoff-stage {
+    position: relative;
+    height: auto;
+    overflow: visible;
+    padding-top: 14vh;
+    padding-bottom: calc(110px + env(safe-area-inset-bottom));
+  }
+  .takeoff-live .runway-detail {
+    display: block;
+    max-height: none;
+  }
+  .takeoff-live .takeoff-instruments {
+    display: none;
+  }
+  .takeoff-live .takeoff-col::before {
+    inset: -14vh -24px -40px calc(-1 * var(--gutter));
+    background: rgba(236, 234, 229, 0.94);
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
 }

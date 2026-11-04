@@ -45,10 +45,13 @@ export const journey: Milestone[] = [
     date: '02/2026 – 06/2026',
     title: `Market Development Executive, ${employer}`,
     place: 'Hanoi',
+    detail:
+      'Managed and developed relationships with 150+ travel agencies and strategic partners across Northern Vietnam; evaluated and worked with General Sales Agents across Taiwan, Korea, Singapore and China',
   },
   {
     date: '06/2026 – Present',
-    title: `Sales Operations & Policy Officer, Headquarters (HDQ), ${employer}`,
+    title: `Sales Policy & Market Management Specialist, Headquarters (HDQ), ${employer}`,
     place: 'Hanoi',
+    detail: 'Sales processes, channel policies and playbooks; Revenue, Pax and Yield analysis; KPI dashboards for management',
   },
 ];

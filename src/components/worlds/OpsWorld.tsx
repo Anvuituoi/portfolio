@@ -36,12 +36,17 @@ function Flap({ text, go, delay }: { text: string; go: boolean; delay: number })
     return () => clearInterval(id);
   }, [go, text, delay]);
   return (
-    <span className="flap">
-      {[...shown].map((c, i) => (
-        <span key={i} className="flap-cell">
-          {c}
-        </span>
-      ))}
+    // Words are grouped and spaces become narrow gaps, so a row reads as words, not single letters.
+    <span className="flap" role="img" aria-label={text.trim()}>
+      {[...shown].map((c, i) =>
+        text[i] === ' ' ? (
+          <span key={i} className="flap-gap" aria-hidden="true" />
+        ) : (
+          <span key={i} className="flap-cell" aria-hidden="true">
+            {c}
+          </span>
+        ),
+      )}
     </span>
   );
 }

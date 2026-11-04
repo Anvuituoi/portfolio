@@ -48,6 +48,9 @@ Not taken from the previous site: the phone number and GPA (both public there), 
 
 ## Decisions
 
+- **Current title:** Sales Policy & Market Management Specialist, Headquarters (HDQ) (owner correction, 4 Nov 2026).
+- **Market Development Executive detail:** the 150+ travel agencies and the GSA evaluation (Taiwan, Korea, Singapore, China) are now listed under this role in the journey. Owner to confirm the attribution.
+
 - **No CV on the website** (owner decision). The CV button and its configuration were removed.
 - **Review mode is off.** Nothing on the site is waiting for confirmation.
 

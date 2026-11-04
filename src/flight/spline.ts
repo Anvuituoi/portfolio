@@ -15,8 +15,8 @@ export interface CamKey {
 
 export const camKeys: CamKey[] = [
   // 01 Gate: three-quarter front, dominant, from the terminal glass (slightly above)
-  { t: 0.0, pos: [40, 3.2, 44], look: [-3.5, 0.8, -6.5], fov: 30 },
-  { t: 0.85, pos: [37, 3.6, 41], look: [-3.5, 0.6, -6.5], fov: 30 },
+  { t: 0.0, pos: [40, 3.2, 44], look: [-3.5, 3.4, -6.5], fov: 30 },
+  { t: 0.85, pos: [37, 3.6, 41], look: [-3.5, 3.2, -6.5], fov: 30 },
   // 02 Lounge: the camera pulls straight back through the glass
   { t: 1.6, pos: [50, 6.5, 56], look: [-3, 0.2, -6], fov: 30 },
   // 03 Boarding: fuselage and forward door

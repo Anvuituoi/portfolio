@@ -50,7 +50,7 @@ export const projects: Project[] = [
       context: [
         'A commercial airline in its startup phase, with sales teams working across regions and channels (OTA, wholesale, corporate, GDS and traditional agents).',
       ],
-      role: ['Sales Operations & Policy Officer, Headquarters (HDQ). Coordination and support for the sales market system rather than direct selling.'],
+      role: ['Sales Policy & Market Management Specialist, Headquarters (HDQ). Coordination and support for the sales market system rather than direct selling.'],
       did: [
         'Designed sales processes, channel policies and playbooks for field sales teams across regions',
         'Analysed Revenue, Pax, Yield and channel effectiveness',

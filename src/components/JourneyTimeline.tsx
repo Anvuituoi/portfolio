@@ -50,6 +50,7 @@ export function JourneyTimeline() {
           <h2 id="takeoff-title" className="section-h display">
             My Journey
           </h2>
+          <p className="runway-key">Runway markers count down to rotation: 8 is where it started, 1 is now.</p>
           <ol className="runway-log">
             {journey.map((m, i) => {
               const state = i < active ? 'passed' : i === active ? 'current' : 'ahead';

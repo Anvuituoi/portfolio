@@ -20,7 +20,8 @@ export function ThinkingSection() {
         items.current.forEach((el, i) => {
           if (!el) return;
           const k = Math.min(1, Math.max(0, (p - 0.05 - i * 0.12) / 0.14));
-          el.style.opacity = String(0.28 + 0.72 * k);
+          // inactive topics stay clearly readable; the active one simply comes forward
+          el.style.opacity = String(0.62 + 0.38 * k);
           el.style.transform = `translate3d(0, ${(1 - k) * 18}px, 0)`;
         });
       },

@@ -54,10 +54,17 @@ function compute(y: number) {
 let lastSky = '';
 export function updateFlight() {
   flight.t = compute(window.scrollY);
-  const dark = flight.t > 5.04 && flight.t < 6.86 ? 'dark' : 'light';
+  // dark instruments only over the night sky of the cruise; the descent cabin wall is light
+  const dark = flight.t > 5.04 && flight.t < 6.0 ? 'dark' : 'light';
   if (dark !== lastSky) {
     document.documentElement.dataset.sky = dark;
     lastSky = dark;
+  }
+  // past the hero, the navigation gets a soft backing so it never sits bare on content
+  const scrolled = window.scrollY > window.innerHeight * 0.6 ? '1' : '';
+  if ((document.documentElement.dataset.scrolled ?? '') !== scrolled) {
+    if (scrolled) document.documentElement.dataset.scrolled = scrolled;
+    else delete document.documentElement.dataset.scrolled;
   }
   emitFlight();
 }

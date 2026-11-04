@@ -52,8 +52,16 @@ Measured on the production build (`npm run build` → `vite preview`) inside a c
 | Accessibility | 8 | 0 axe violations, full keyboard path, Flight Manifest. Held back by the lack of screen-reader testing. |
 | Performance | 7 | Mobile LCP 1.6 s with applied throttling and CLS 0.001, but simulated Lighthouse Performance is 82–87 (target 85), and desktop frame rate was not measured on a GPU. |
 
+## Fixes after owner review (4 Nov 2026)
+
+- Hero: headline size is bounded by window height and the aircraft sits lower, so the tagline never overlaps the headline (checked at 1440×900 and 1440×650); the front headline has a silver outline where the burgundy tail passes behind it.
+- Journey: stronger scrim with blur behind the list; a one-line key explains the 8 → 1 countdown; on screens narrower than 900 px or shorter than 720 px the list scrolls normally and clears the bottom altimeter bar (checked at 860×700).
+- Navigation: a soft backing appears once past the hero; silver instruments are limited to the night cruise (the descent cabin wall is light).
+- Departure board: words are grouped so rows read as words.
+- Thinking & Interests: inactive topics stay at 62 % opacity instead of 28 %.
+- Descent on 768–899 px live screens: the cabin window keeps its shape beside the text.
+
 ## Known issues
 
-- The navigation text can sit over a dark project panel for a moment while scrolling through the climb (it switches to silver only for the lounge and cruise).
 - The lounge panel heading takes focus a beat late when the main thread is busy (focus lands on it after the transition).
 - Lighthouse Performance on simulated mobile varies between 82 and 87 across runs.
